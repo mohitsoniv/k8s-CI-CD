@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: YOUR_DOCKER_USERNAME/myapp-frontend:latest
+        image: mohitsoniv/myapp-frontend:latest
         ports:
         - containerPort: 80
         env:
