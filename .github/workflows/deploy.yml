@@ -41,6 +41,8 @@ jobs:
         tags: ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}, ${{ env.FRONTEND_IMAGE }}:latest
     
     - name: Deploy to Kubernetes
+      env:
+        KUBECONFIG: /home/ubuntu/.kube/config
       run: |
         kubectl set image deployment/backend backend=${{ env.BACKEND_IMAGE }}:${{ github.sha }} -n ${{ env.NAMESPACE }}
         kubectl set image deployment/frontend frontend=${{ env.FRONTEND_IMAGE }}:${{ github.sha }} -n ${{ env.NAMESPACE }}
