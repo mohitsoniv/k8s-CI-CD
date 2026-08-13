@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: YOUR_DOCKER_USERNAME/myapp-frontend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: VITE_API_URL
+          value: "http://backend-service:8080"
